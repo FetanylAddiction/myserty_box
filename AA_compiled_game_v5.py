@@ -260,7 +260,7 @@ class Game:
 
         self.help_button = Button(self.help_export_frame, text="Help / Rules",
                                   font="arial 15 bold", bg="#808080", fg="white",
-                                  command=lambda: Help(partner))
+                                  command=self.help)
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats...",
@@ -366,6 +366,11 @@ class Game:
                                 "or view yours stats. Sorry about that.".format(current_balance)
             self.balance_label.config(fg="#660000", font="arial 10 bold",
                                       text=balance_statement)
+
+    def help(self):
+        print("You asked for help")
+        get_help = Help(self)
+        get_help.help_text.configure(text="help text goes here", bg="orange")
 
     def to_quit(self):
         root.destroy()
